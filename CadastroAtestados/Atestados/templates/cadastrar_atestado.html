@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Cadastrar Atestado{% endblock %}
+
+{% block content %}
+<h1>Cadastrar Atestado</h1>
+<form method="post" enctype="multipart/form-data" action="{% url 'cadastrar_atestado' %}">
+    {% csrf_token %}
+    <div>
+        {% for field in form.visible_fields %}
+        <div>
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+        </div>
+        {% endfor %}
+    </div>
+    <button type="submit">Salvar</button>
+</form>
+{% endblock %}
+

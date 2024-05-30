@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Início{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'styles/css/inicio.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/inicio.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<h1>Bem-vindo!</h1>
+<p>Total de Atestados: {{ total_atestados }}</p>
+
+<h2>Últimos 5 Atestados</h2>
+<ul>
+    {% for atestado in ultimos_atestados %}
+        <li> O(A) Aluno(a) {{ atestado.nome_aluno }} esteve/estará afastado(a) por {{ atestado.dias_afastamento }} dia(s) 
+            a partir/desde de {{ atestado.data_atestado }} com a seguinte justificativa: {{ atestado.observacoes }}
+        </li>
+    {% empty %}
+        <li>Nenhum atestado encontrado.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

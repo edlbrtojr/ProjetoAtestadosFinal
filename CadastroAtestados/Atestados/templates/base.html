@@ -1,0 +1,35 @@
+{% load pwa %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Meu Site{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/global-style.css' %}">
+
+    {% progressive_web_app_meta %}
+</head>
+<body>
+    <div class="container">
+
+        <header class="cabecalho">
+            <nav class="cabecalho__menu">
+                <a class="cabecalho__menu__link" href="{% url 'inicio' %}"> Iní­cio </a>
+                <a class="cabecalho__menu__link" href="{% url 'cadastrar_atestado' %}"> Cadastrar </a>
+                <a class="cabecalho__menu__link" href="{% url 'lista_atestados' %}"> Visualizar </a>
+            </nav>
+        </header>   
+
+        <main>
+            {% block content %}
+            <!-- Conteúdo principal -->
+            {% endblock %}
+        </main>
+        <footer>
+            <!-- Conteúdo do rodapé, se houver -->
+        </footer>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Atestados{% endblock %}
+
+{% block content %}
+    <h1>Lista de Atestados</h1>
+    <form method="GET">
+        {{ form.as_p }}
+        <button type="submit">Buscar</button>
+    </form>
+    <ul>
+        {% for atestado in atestados %}
+            <li>
+                <strong>Nome do Aluno:</strong> {{ atestado.nome_aluno }} <br>
+                <strong>Ano do Aluno:</strong> {{ atestado.ano_aluno }} <br>
+                <strong>Turma do Aluno:</strong> {{ atestado.turma_aluno }} <br>
+                <strong>Data do Atestado:</strong> {{ atestado.data_atestado }} <br>
+                <strong>Dias de Afastamento:</strong> {{ atestado.dias_afastamento }} <br>
+                <strong>Observações:</strong> {{ atestado.observacoes }} <br>
+                <strong>Arquivo:</strong> <a href="{{ atestado.arquivo.url }}">{{ atestado.arquivo.name }}</a>
+            </li>
+            <br>
+        {% endfor %}
+    </ul>
+{% endblock %}
